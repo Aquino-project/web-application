@@ -1,0 +1,45 @@
+.dashboard-list {
+    width: 100%;
+}
+
+.dashboard-list .item {
+    background: #fff;
+    padding: 10px;
+    border-bottom: solid 1px #f3f3f3;
+    color: #8f8f8f;
+}
+
+.dashboard-list .item h2 {
+    text-align: center;
+    margin: 0;
+    font-weight: 100;
+}
+
+.dashboard-list .item h3 {
+    font-size: 60px;
+    font-weight: 100;
+    display: inline-block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+
+.dashboard-list .item .icon {
+    font-size: 60px;
+    width: 50px;
+    margin-right: 30px;
+    margin-left: 10px;
+    text-align: center;
+}
+
+.dashboard-list .item .icon.red {
+    color: #db3f4d;
+}
+
+.dashboard-list .item .icon.yellow {
+    color: #dbc543;
+}
+
+.dashboard-list .item .icon.blue {
+    color: #6aade1;
+}

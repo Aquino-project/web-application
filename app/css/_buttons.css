@@ -1,0 +1,13 @@
+button {
+    outline: none;
+}
+
+.btn.icon {
+    background: none;
+    font-size: 30px;
+    border: 0; 
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+    color: #484a4c;
+}

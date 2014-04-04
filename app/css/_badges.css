@@ -1,0 +1,15 @@
+.got-badge {
+    position: relative;
+}
+
+.got-badge .badge {
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    background: #c50006;
+    font-size: 12px;
+    padding-left: 4px;
+    padding-right: 4px;
+    color: white;
+    border-radius: 20px;
+}

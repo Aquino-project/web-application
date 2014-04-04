@@ -1,0 +1,80 @@
+[id=content] {
+    position: fixed;
+    z-index: 3;
+    top: 0; bottom: 0;
+    left: 0; right: 0;
+    overflow: auto;
+    width: 100%;
+}
+
+.transition {
+    transition-duration: 0.2s;
+    -webkit-transition-duration: 0.2s;
+}
+
+[id=content].active,
+[id=header].active {
+    -webkit-transform: translate3D(80%, 0, 0);
+    transform: translate3D(80%, 0, 0);
+}
+
+[id=header] {
+    z-index: 3;
+    position: fixed;
+    width: 100%;
+    background: #f8f8f8;
+    right: 0; left: 0;
+    top: 0;
+    color: #484a4c;
+    text-align: center;
+    padding: 10px;
+    border-bottom: solid 1px #e4e9ea;
+}
+
+.btn.icon.nav {
+    margin-left: 10px;
+}
+
+.btn.icon.notif {
+    margin-top: 2px;
+    margin-right: 10px;
+    font-size: 27px;
+}
+
+[id=logo] {
+    display: inline-block;
+    padding-top: 7px;
+}
+
+[id=nav] {
+    -webkit-transform: translate3D(-100%, 0, 0);
+    transform: translate3D(-100%, 0, 0);
+    z-index: 2;
+    position: absolute;
+    width: 80%;
+    height: 100%;
+    top: 0; bottom: 0;
+    left: 0;
+    background: #3d3e3d;
+    padding-left: 20px;
+}
+
+[id=nav] h3 {
+    font-weight: 100;
+    font-size: 20px;
+    color: #9a9a9a;
+}
+
+[id=nav] h3.active {
+    font-size: 28px;
+    color: #fcfffd;
+}
+
+[id=nav].active {
+    -webkit-transform: translate3D(0, 0, 0);
+    transform: translate3D(0, 0, 0);
+}
+
+.logged-content {
+    margin-top: 60px;
+}
