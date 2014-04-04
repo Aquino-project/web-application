@@ -1,8 +1,14 @@
-.dashboard-list {
+.dashboard-list,
+.list {
     width: 100%;
+    overflow: auto;
+    height: calc(100%);
+    -webkit-overflow-scrolling:touch;
+    overflow-scrolling:touch;
 }
 
-.dashboard-list .item {
+.dashboard-list .item,
+.list .item {
     background: #fff;
     padding: 10px;
     border-bottom: solid 1px #f3f3f3;
@@ -42,4 +48,30 @@
 
 .dashboard-list .item .icon.blue {
     color: #6aade1;
+}
+
+.list .item {
+    font-size: 12px;
+    position: relative;
+}
+
+.list .item h3 {
+    font-size: 20px;
+    font-weight: 200;
+    color: #891621;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.list .item .delete {
+    background: #c50006;
+    color: white;
+    border: 0;
+    font-size: 17px;
+    top: 0; right: 0;
+    height: 100%;
+    position: absolute;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
