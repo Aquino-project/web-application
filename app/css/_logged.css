@@ -124,3 +124,13 @@
 .logged-content {
     margin-top: 60px;
 }
+
+.settings-title {
+    font-weight: 100;
+    color: #bcbbc1;
+    margin-left: 10px;
+}
+
+.settings-title .btn{
+    margin-top: -1px;
+}

@@ -17,9 +17,9 @@
         <!-- Navigation sidebar -->
         <nav id="nav" class="transition">
             <span class="list">
-                <h3 class="active">Accueil</h3>
+                <h3>Accueil</h3>
                 <h3>Live</h3>
-                <h3>Configurations</h3>
+                <h3 class="active">Configurations</h3>
                 <h3>Déconnexion</h3>
             </span>
         </nav>
@@ -74,22 +74,73 @@
                 </div>
             </section>
 
-            <!-- Liste des constantes -->
-            <div class="dashboard-list">
-                <div class="item">
-                    <h2>Température</h2>
-                    <span class="icon ion-thermometer red"></span>
-                    <h3>19</h3> °C
+            <!-- Configurations -->
+            <div class="list">
+                <h3 class="settings-title">Niveau d'eau</h3>
+
+                <div class="item item-settings">
+                    Impossible d'accéder à Internet !
                 </div>
-                <div class="item">
-                    <h2>Intensité des leds</h2>
-                    <span class="icon ion-ios7-lightbulb-outline yellow"></span>
-                    <h3>88</h3> mA
+
+                <!--- -->
+
+                <h3 class="settings-title">
+                    <button class="btn blue right">Nourrire maintenant</button>
+                    Nourrissage
+                </h3>
+
+                <div class="item item-settings">
+                    <button class="btn red right">Supprimer</button>
+                    18h30
                 </div>
-                <div class="item">
-                    <h2>Prochain nourrissage</h2>
-                    <span class="icon ion-fork blue"></span>
-                    <h3>18</h3> h
+                <div class="item item-settings no-border">
+                    <button class="btn red right">Supprimer</button>
+                    19h30
+                </div>
+
+                <!--- -->
+
+                <h3 class="settings-title">Eclairage</h3>
+
+                <div class="item item-settings">
+                    Allumer à 
+                    &nbsp;&nbsp;
+                    <input class="number" type="number"> : <input class="number" type="number">
+                    &nbsp;&nbsp;&nbsp;
+                    <button class="btn">Enregistrer</button>
+                </div>
+                <div class="item item-settings no-border">
+                    Eteindre à 
+                    &nbsp;
+                    <input class="number" type="number"> : <input class="number" type="number">
+                    &nbsp;&nbsp;&nbsp;
+                    <button class="btn">Enregistrer</button>
+                </div>
+
+                <!--- -->
+
+                <h3 class="settings-title">
+                    <button class="btn blue right">Ajouter un email</button>
+                    Emails
+                </h3>
+
+                <div class="item item-settings">
+                    <button class="btn red right">Supprimer</button>
+                    test@domain.com
+                </div>
+                <div class="item item-settings no-border">
+                    <button class="btn red right">Supprimer</button>
+                    test@domain.com
+                </div>
+
+                <!--- -->
+
+                <h3 class="settings-title">Mot de passe</h3>
+
+                <div class="item item-settings">
+                    <input class="mdp" type="password">
+                    &nbsp;&nbsp;&nbsp;
+                    <button class="btn">Enregistrer</button>
                 </div>
             </div>
         </section>

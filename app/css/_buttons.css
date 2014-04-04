@@ -11,3 +11,25 @@ button {
     vertical-align: top;
     color: #484a4c;
 }
+
+.btn {
+    border: 0;
+    color: #4db74d;
+    border: solid 1px #4db74d;
+    border-radius: 30px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 13px;
+    background: transparent;
+}
+
+.btn.blue {
+    color: #3379b7;
+    border: solid 1px #3379b7;
+}
+
+.btn.red {
+    color: #bb0000;
+    border: solid 1px #bb0000;
+}
