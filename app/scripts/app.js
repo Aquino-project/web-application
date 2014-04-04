@@ -31,6 +31,12 @@ $(document).ready(function() {
         setTimeout(function() {
             $item.remove();
         }, 500);
+
+        setTimeout(function() {
+            if ($list.children('.item').length <= 0) {
+                $list.html('<br><center>Aucune notification</center>');
+            }
+        }, 600);
     });
 
 });
