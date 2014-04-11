@@ -32,6 +32,9 @@
                 <span class="badge">3</span>
                 <span class="ion-ios7-bell-outline"></span>
             </button>
+            <button id="hide-notif" class="btn icon notif right">
+                <span class="ion-ios7-close-outline"></span>
+            </button>
 
             <!-- Logo & etat -->
             <a href="#" id="logo">
@@ -41,24 +44,37 @@
 
         <!-- Contenue -->
         <section id="content" class="transition logged-content">
-            <!-- Liste des constantes -->
-            <div class="dashboard-list">
-                <div class="item">
-                    <h2>Température</h2>
-                    <span class="icon ion-thermometer red"></span>
-                    <h3>19</h3> °C
+            <!-- Notifications -->
+            <section id="notifications">
+                <div class="list">
+                    <div class="item">
+                        <button class="delete delete-item">
+                            <span class="ion-close"></span>
+                        </button>
+                        
+                        <h3>Erreur !</h3>
+                        Impossible d'accéder à Internet !
+                    </div>
+
+                    <div class="item">
+                        <button class="delete delete-item">
+                            <span class="ion-close"></span>
+                        </button>
+                        
+                        <h3>Erreur !</h3>
+                        Impossible d'accéder à Internet !
+                    </div>
+
+                    <div class="item">
+                        <button class="delete delete-item">
+                            <span class="ion-close"></span>
+                        </button>
+                        
+                        <h3>Erreur !</h3>
+                        Impossible d'accéder à Internet !
+                    </div>
                 </div>
-                <div class="item">
-                    <h2>Intensité des leds</h2>
-                    <span class="icon ion-ios7-lightbulb-outline yellow"></span>
-                    <h3>88</h3> mA
-                </div>
-                <div class="item">
-                    <h2>Prochain nourrissage</h2>
-                    <span class="icon ion-fork blue"></span>
-                    <h3>18</h3> h
-                </div>
-            </div>
+            </section>
         </section>
 
         <script type="text/javascript" src="scripts/jquery.js"></script>

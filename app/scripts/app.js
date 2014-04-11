@@ -5,22 +5,6 @@ $(document).ready(function() {
         $('#nav, #header, #content').toggleClass('active');
     });
 
-    // Affiche les notifications
-    $('#display-notif').on('click', function() {
-        $('#notifications').addClass('active');
-        $('#notifications').removeClass('hide');
-        $(this).hide();
-        $('#hide-notif').show();
-    });
-
-    // Cache les notifications
-    $('#hide-notif').on('click', function() {
-        $('#notifications').addClass('hide');
-        $('#notifications').removeClass('active');
-        $(this).hide();
-        $('#display-notif').show();
-    });
-
     // Animation a la suppression
     $('.delete-item').on('click', function () {
         var $current = $(this);
