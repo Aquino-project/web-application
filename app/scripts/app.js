@@ -49,6 +49,10 @@ $(document).ready(function() {
 
     // Selectionne les tabs du menu
     $('#nav').on('click', 'h3', function () {
+        $('#nav').removeClass('active');
+        $('#content').removeClass('active');
+        $('#header').removeClass('active');
+        
         $('#nav h3.active').removeClass('active');
         $(this).addClass('active');
     });
