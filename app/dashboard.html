@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
         <title>Aquino</title>
 
-        <link rel="stylesheet" type="text/css" href="css/app.css">
+        <link rel="stylesheet" type="text/css" href="static/css/app.css">
     </head>
 
     <body>
@@ -18,51 +18,51 @@
         <!-- Navigation sidebar -->
         <nav id="nav" class="transition">
             <span class="list">
-                <h3 class="active">Accueil</h3>
-                <h3 onclick="window.location.href = 'dashboard.html';">Live</h3>
-                <h3 onclick="window.location.href = 'reglages.html';">Configurations</h3>
+                <h3 class="active change-page" data-page="dashboard/index">Accueil</h3>
+                <h3 class="change-page" data-page="dashboard/live">Live</h3>
+                <h3 class="change-page" data-page="dashboard/reglages">Configurations</h3>
                 <h3 onclick="window.location.href = 'index.html';">Déconnexion</h3>
+
+                <br>
+                <button class="btn blue">Nourrire les poissons maintenant</button>
+                <br><br>
+                <button class="btn flatgreen">Allumer les LEDS maintenant</button>
             </span>
         </nav>
 
         <header id="header" class="transition">
             <!-- Boutons de navigation -->
             <button id="display-nav" class="btn icon nav left"><span class="ion-navicon"></span></button>
-            <button id="display-notif" class="btn icon notif right got-badge">
+            <button id="back" class="btn icon nav left"><span class="ion-ios7-arrow-left"></span></button>
+            <button id="display-notif" class="btn icon notif right got-badge change-page" data-page="dashboard/notifs">
                 <span class="badge">3</span>
                 <span class="ion-ios7-bell-outline"></span>
             </button>
+            <button id="hide-notif" class="btn icon notif right">
+                <span class="ion-ios7-close-outline"></span>
+            </button>
 
             <!-- Logo & etat -->
-            <a href="#" id="logo">
-                <img src="images/thumb/off.png" width="50">
+            <a id="logo">
+                <img src="static/images/thumb/on.png" width="50">
             </a>
         </header>
 
         <!-- Contenue -->
-        <section id="content" class="transition logged-content">
-            <!-- Liste des constantes -->
-            <div class="dashboard-list">
-                <div class="item">
-                    <h2>Température</h2>
-                    <span class="icon ion-thermometer red"></span>
-                    <h3>19</h3> °C
-                </div>
-                <div class="item">
-                    <h2>Intensité des leds</h2>
-                    <span class="icon ion-ios7-lightbulb-outline yellow"></span>
-                    <h3>88</h3> mA
-                </div>
-                <div class="item">
-                    <h2>Prochain nourrissage</h2>
-                    <span class="icon ion-fork blue"></span>
-                    <h3>18</h3> h
-                </div>
-            </div>
-        </section>
+        <section id="content" class="transition logged-content"></section>
 
-        <script type="text/javascript" src="scripts/jquery.js"></script>
-        <script type="text/javascript" src="scripts/fastclick.js"></script>
+        <script type="text/javascript" src="scripts/lib/jquery.js"></script>
+        <script type="text/javascript" src="scripts/lib/fastclick.js"></script>
         <script type="text/javascript" src="scripts/app.js"></script>
+
+        <!-- TEMPLATES -->
+        <script type="text/template" id="template-error">
+            <div class="error">
+                <h3>Une erreur est survenue !</h3>
+                <p>
+                    Merci de ré-essayer plus tard
+                </p>
+            </div>
+        </script>
     </body>
 </html>

@@ -33,3 +33,13 @@ button {
     color: #bb0000;
     border: solid 1px #bb0000;
 }
+
+.btn.orange {
+    color: #c0392b;
+    border: solid 1px #c0392b;
+}
+
+.btn.flatgreen {
+    color: #27ae60;
+    border: solid 1px #27ae60;
+}

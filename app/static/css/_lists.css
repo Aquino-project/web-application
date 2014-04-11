@@ -55,10 +55,13 @@
     position: relative;
 }
 
+.list .item h3.notif {
+    color: #891621;
+}
+
 .list .item h3 {
     font-size: 20px;
     font-weight: 200;
-    color: #891621;
     margin-bottom: 5px;
     margin-top: 5px;
 }
@@ -107,4 +110,15 @@
 
 .item-settings .btn.right {
     margin-top: -5px;
+}
+
+.item {
+    cursor: pointer;
+}
+
+.item .arrow {
+    float: right;
+    margin-right: 10px;
+    margin-top: 3px;
+    font-size: 30px;
 }
