@@ -47,7 +47,6 @@
 
 [id=logo] {
     display: inline-block;
-    padding-top: 7px;
 }
 
 [id=nav] {
@@ -80,45 +79,11 @@
 }
 
 [id=notifications] {
-    position: fixed;
-    z-index: 4;
     width: 100%;
-    background: white;
-    -webkit-transform: translateY(100%);
     height: calc(100% - 60px);
     overflow: auto;
     -webkit-overflow-scrolling:touch;
     overflow-scrolling:touch;
-}
-
-[id=notifications].hide {
-    -webkit-animation: hideNotif 0.2s;
-    display: block;
-}
-
-[id=notifications].active {
-    -webkit-transform: translateY(0px);
-    display: block;
-    -webkit-animation: dispNotif 0.2s;
-}
-
-@-webkit-keyframes dispNotif {
-    0% {
-        -webkit-transform: translateY(100%);
-    } 
-    100% {
-        -webkit-transform: translateY(0px);
-    }
-}
-
-@-webkit-keyframes hideNotif {
-    0% {
-        -webkit-transform: translateY(0px);
-    } 
-    100% {
-        -webkit-transform: translateY(100%);
-        display: none;
-    }
 }
 
 .logged-content {
