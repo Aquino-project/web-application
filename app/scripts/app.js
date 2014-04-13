@@ -2,7 +2,8 @@ var currentPage = "dashboard/index";
 var oldPage = "";
 
 var app = {
-    init: function () {
+    init: function ()
+    {
         Template.load('dashboard/index', $('#content'));
     }
 };
@@ -35,6 +36,8 @@ var Template = {
 };
 
 $(document).ready(function() {
+
+    FastClick.attach(document.body);
 
     app.init();
     
@@ -108,6 +111,12 @@ $(document).ready(function() {
 
     $('body').on('click', '.disp-back', function() {
         UI.showBack();
+    });
+
+    $('#to-feed').on('click', function() {
+        apiCtrl.connect('/feed/now', [], function (result) {
+            alert(result);
+        });
     });
 
 });
