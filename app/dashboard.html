@@ -15,6 +15,9 @@
 
     <body>
 
+        <!-- Notifications container -->
+        <section id="notifications-container"></section>
+
         <!-- Navigation sidebar -->
         <nav id="nav" class="transition">
             <span class="list">
@@ -24,7 +27,7 @@
                 <h3 onclick="window.location.href = 'index.html';">Déconnexion</h3>
 
                 <br>
-                <button class="btn blue">Nourrire les poissons maintenant</button>
+                <button class="btn blue" id="to-feed">Nourrire les poissons maintenant</button>
                 <br><br>
                 <button class="btn flatgreen">Allumer les LEDS maintenant</button>
             </span>
@@ -54,6 +57,8 @@
         <script type="text/javascript" src="scripts/lib/jquery.js"></script>
         <script type="text/javascript" src="scripts/lib/fastclick.js"></script>
         <script type="text/javascript" src="scripts/app.js"></script>
+        <script type="text/javascript" src="scripts/controllers/apiCtrl.js"></script>
+        <script type="text/javascript" src="scripts/controllers/notificationCtrl.js"></script>
 
         <!-- TEMPLATES -->
         <script type="text/template" id="template-error">

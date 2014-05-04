@@ -42,22 +42,24 @@ $(document).ready(function() {
     app.init();
     
     // Systeme de changement de page
-    $('body').on('click', '.change-page', function (event) {
+    $('body').on('click', '.change-page[data-page]', function (event) {
         event.preventDefault();
         var page = $(this).attr('data-page');
+        var $nav = $('#nav');
         var $content = $('#content');
+        var $header = $('#header');
 
-        Template.load(page, $content);
-    });
-
-    // Selectionne les tabs du menu
-    $('#nav').on('click', 'h3', function () {
-        $('#nav').removeClass('active');
-        $('#content').removeClass('active');
-        $('#header').removeClass('active');
+        // Cache le menu si il est affiché
+        if ($nav.hasClass('active')) {
+            $nav.removeClass('active');
+            $content.removeClass('active');
+            $header.removeClass('active');
+        }
         
         $('#nav h3.active').removeClass('active');
-        $(this).addClass('active');
+        $('#nav h3[data-page="'+ page +'"]').addClass('active');
+
+        Template.load(page, $content);
     });
 
     // Affiche le menu
@@ -115,7 +117,7 @@ $(document).ready(function() {
 
     $('#to-feed').on('click', function() {
         apiCtrl.connect('/feed/now', [], function (result) {
-            alert(result);
+            notificationCtrl.add('feed-ok', 'Bravo !', result);
         });
     });
 
