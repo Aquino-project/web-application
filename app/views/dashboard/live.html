@@ -1,0 +1,135 @@
+<!-- LIVE -->
+<script type="template" id="live-template-element">
+<div id="live-element" style="
+    width:100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index:10"
+>
+    <div class="icon ion-close change-page" data-page="dashboard/index" id="live-close" style="
+        font-size: 25px;
+        width: 30px; 
+        height: 30px;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        color: rgba(255,255,255,0.5);
+    "></div>
+
+
+    <div style="
+        position: absolute;
+        right: 0px;
+        bottom: 20px;
+        height: 100px;
+        width: 100px;
+        color: rgba(255,255,255,0.5);
+        font-size: 30px;
+    ">
+        <div class="icon ion-ios7-arrow-left live-change-direction" data-type="left" style="
+            left: 0;
+            display: block;
+            position: absolute;
+            top: 34px;
+            width: 30px;
+            height: 30px;
+        "></div>
+        <div class="icon ion-ios7-arrow-right live-change-direction" data-type="right" style="
+            right: 0;
+            display: block;
+            position: absolute;
+            top: 34px;
+            width: 30px;
+            height: 30px;
+        "></div>
+        <div class="icon ion-ios7-arrow-up live-change-direction" data-type="up" style="
+            top: 0;
+            display: block;
+            position: absolute;
+            left: 31px;
+            width: 30px;
+            height: 30px;
+        "></div>
+        <div class="icon ion-ios7-arrow-down live-change-direction" data-type="down" style="
+            top: 70px;
+            display: block;
+            position: absolute;
+            right: 38px;
+            width: 30px;
+            height: 30px;
+        "></div>
+    </div>
+
+</div>
+</script>
+
+<script type="text/javascript">
+
+    /*
+     * COMMANDES
+     * 0: UP
+     * 1: STOP
+     * 2: DOWN
+     * 4: GAUCHE
+     * 6: DROITE
+    */
+    var liveTemplateElement = $('#live-template-element').html();
+    var opts = {
+        ip: "15221220.myvisioncam.org",
+        user: "admin",
+        pwd: ""
+    };
+
+    initCam(opts);
+
+    $('body').prepend(liveTemplateElement);
+
+    $('#live-element').css(
+        'background', 'url("http://'+ opts['ip'] +'/videostream.cgi?user='+ opts['user'] +'&pwd='+ opts['pwd'] +'&resolution=32") #000 no-repeat'
+    );
+
+    $('body').on('click', '#live-close', function () {
+        $('#live-element').remove();
+    });
+
+    $('body').on('click', '#live-element .live-change-direction', function() {
+        var type = $(this).attr('data-type');
+        writeCommand(type, opts);
+        setTimeout(function() {writeCommand('stop', opts); }, 2000);
+    });
+
+    function writeCommand(type, opts)
+    {
+        var command = 1;
+
+        switch (type) {
+            case 'up':
+                command = 0;
+                break;
+            case 'down': 
+                command = 2;
+                break;
+            case 'left':
+                command = 4;
+                break;
+            case 'right':
+                command = 6;
+                break;
+        }
+
+        $.ajax({
+            url: 'http://'+ opts['ip'] +'/decoder_control.cgi?command='+ command +'&user='+ opts['user'] +'&pwd='+ opts['pwd']
+        });
+    }
+
+    function initCam(opts)
+    {
+        $.ajax({
+            url: 'http://'+ opts['ip'] +'/set_misc.cgi?led_mode=2&ptz_patrol_rate=10&ptz_auto_patrol_interval=0&Ptz_patrol_v_round=0&Ptz_patrol_h_round=0&user='+ opts['user'] +'&pwd='+ opts['pwd']
+            });
+    }
+</script>
