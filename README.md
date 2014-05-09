@@ -5,11 +5,6 @@
 * Romain QUILLIOT
 
 
-## Pré-requis
-
-* NodeJS 0.10.*
-
-
 ## License
 
 The MIT License (MIT)
