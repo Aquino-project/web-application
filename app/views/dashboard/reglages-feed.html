@@ -1,19 +1,108 @@
+<script>
+    apiCtrl.request('/feed/hours', [], function (rawDatas) {
+        if (rawDatas.error) {
+            return false;
+        }
+
+        var template = $.get('views/dashboard/lists/reglages-feed.html', function (result) {
+            var template = Mustache.render(result, rawDatas);
+            $('#feed-hour-list').html(template);
+        });
+    });
+
+    /***********/
+    /** EVENTS **/
+    /***********/
+
+    $('body').on('click', '#modify-feed-hour', function() {
+        var hour = $('#hour-feed-hour').val();
+
+        apiCtrl.request('/feed', {
+            method: 'POST',
+            data: {
+                hour: hour
+            }
+        }, function (result) {
+                if (result.error == true) {
+                    notificationCtrl.add('feed-no', 'Opération échouée', result.message);
+                    return false;
+                }
+                notificationCtrl.add('feed-ok', 'Opération réussie', result.message);
+
+                var template = $.get('views/dashboard/lists/reglages-feed.html', function (result) {
+                    var template = Mustache.render(result, {
+                        heures: [{
+                            hour: hour
+                        }]
+                    });
+                    $('#feed-hour-list').append(template);
+                });
+
+                return true;
+            }
+        );
+    });
+
+    $('body').on('click', '.delete-feed-hour', function() {
+        var hour = $(this).attr('data-heure');
+        var current = this;
+
+        apiCtrl.request('/feed/delete', {
+            method: 'POST',
+            data: {
+                hour: hour
+            }
+        }, function (result) {
+                if (result.error == true) {
+                    notificationCtrl.add('feed-no', 'Opération échouée', result.message);
+                    return false;
+                }
+
+                $(current).parent().remove();
+
+                notificationCtrl.add('feed-ok', 'Opération réussie', result.message);
+                return true;
+            }
+        );
+    });
+</script>
+
 <div class="list">
     <h3 class="settings-title">
         Nourrissage
     </h3>
 
-    <div class="item item-settings">
-        <button class="btn red right">Supprimer</button>
-        18h00
-    </div>
+    <div id="feed-hour-list"></div>
+
     <div class="item item-settings no-border">
-        <button class="btn red right">Supprimer</button>
-        19h00
-    </div>
-    <div class="item item-settings no-border">
-        <input type="number" class="number" placeholder="00">h00
+        <select id="hour-feed-hour">
+            <option value="00">00</option>
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+        </select>h00
         &nbsp;&nbsp;
-        <button class="btn">Ajouter l'heure</button>
+        <button class="btn" id="modify-feed-hour">Ajouter l'heure</button>
     </div>
 </div>

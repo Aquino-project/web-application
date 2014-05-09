@@ -119,8 +119,8 @@ $(document).ready(function() {
     // Donne la nourriture maintenant
     $('#to-feed').on('click', function() {
         apiCtrl.request('/feed/now', [], function (result) {
-            if (result.error == "true") {
-                notificationCtrl.add('feed-ok', 'Opération échouée', result.message);
+            if (result.error == true) {
+                notificationCtrl.add('feed-no', 'Opération échouée', result.message);
                 return false;
             }
 
