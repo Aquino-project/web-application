@@ -14,8 +14,12 @@
     /** EVENTS **/
     /***********/
 
+    // Ajout d'heure
     $('body').on('click', '#modify-feed-hour', function() {
         var hour = $('#hour-feed-hour').val();
+        
+        $('#modify-feed-hour').hide();
+        $('.loading').show();
 
         apiCtrl.request('/feed', {
             method: 'POST',
@@ -25,9 +29,12 @@
         }, function (result) {
                 if (result.error == true) {
                     notificationCtrl.add('feed-no', 'Opération échouée', result.message);
+
+                    $('.loading').hide();
+                    $('#modify-feed-hour').show();
+
                     return false;
                 }
-                notificationCtrl.add('feed-ok', 'Opération réussie', result.message);
 
                 var template = $.get('views/dashboard/lists/reglages-feed.html', function (result) {
                     var template = Mustache.render(result, {
@@ -38,14 +45,22 @@
                     $('#feed-hour-list').append(template);
                 });
 
+                $('.loading').hide();
+                $('#modify-feed-hour').show();
+
                 return true;
             }
         );
     });
 
+    // Suppression d'heures
     $('body').on('click', '.delete-feed-hour', function() {
         var hour = $(this).attr('data-heure');
         var current = this;
+        var $parent = $(current).parent();
+
+        $(current).hide();
+        $parent.children('.item-loading').show();
 
         apiCtrl.request('/feed/delete', {
             method: 'POST',
@@ -55,12 +70,9 @@
         }, function (result) {
                 if (result.error == true) {
                     notificationCtrl.add('feed-no', 'Opération échouée', result.message);
-                    return false;
                 }
 
                 $(current).parent().remove();
-
-                notificationCtrl.add('feed-ok', 'Opération réussie', result.message);
                 return true;
             }
         );
@@ -104,5 +116,6 @@
         </select>h00
         &nbsp;&nbsp;
         <button class="btn" id="modify-feed-hour">Ajouter l'heure</button>
+        <span class="ion-loading-c loading" style="font-size: 20px; display:none"></span>
     </div>
 </div>
