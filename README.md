@@ -1,4 +1,13 @@
-### Aquino
+# Aquino
+
+## Auteur de la partie
+
+* Romain QUILLIOT
+
+
+## Pré-requis
+
+* NodeJS 0.10.*
 
 
 ## License
