@@ -1,9 +1,9 @@
 var apiCtrl = {
 
-    url: "http://192.168.0.13",
+    url: "http://192.168.1.101",
     port: 1337,
 
-    connect: function (uri, params, success)
+    request: function (uri, params, success, error)
     {
         if (!params) {
             params = [];
@@ -17,6 +17,10 @@ var apiCtrl = {
             params.data = [];
         }
 
+        if (!error) {
+            error = function () { };
+        }
+
         var apiContactUrl = this.url +":"+ this.port + uri;
 
         $.ajax({
@@ -27,6 +31,10 @@ var apiCtrl = {
             success(function(result) 
             {
                 success(result);
+            }).
+            error(function(error)
+            {
+                error(error);
             });
     }
 

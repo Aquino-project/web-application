@@ -111,13 +111,21 @@ $(document).ready(function() {
         }
     });
 
+    // Fix du bouton back quand on click dans le menu
     $('body').on('click', '.disp-back', function() {
         UI.showBack();
     });
 
+    // Donne la nourriture maintenant
     $('#to-feed').on('click', function() {
-        apiCtrl.connect('/feed/now', [], function (result) {
-            notificationCtrl.add('feed-ok', 'Bravo !', result);
+        apiCtrl.request('/feed/now', [], function (result) {
+            if (result.error == "true") {
+                notificationCtrl.add('feed-ok', 'Opération échouée', result.message);
+                return false;
+            }
+
+            notificationCtrl.add('feed-ok', 'Opération réussie', result.message);
+            return true;
         });
     });
 

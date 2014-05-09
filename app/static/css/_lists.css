@@ -112,6 +112,12 @@
     margin-top: -5px;
 }
 
+.item-settings input.width {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .item {
     cursor: pointer;
 }
