@@ -43,6 +43,7 @@
                         }]
                     });
                     $('#feed-hour-list').append(template);
+                    $('#hour-feed-hour').val('00');
                 });
 
                 $('.loading').hide();
@@ -72,7 +73,7 @@
                     notificationCtrl.add('feed-no', 'Opération échouée', result.message);
                 }
 
-                $(current).parent().remove();
+                $(current).parent().slideUp();
                 return true;
             }
         );
