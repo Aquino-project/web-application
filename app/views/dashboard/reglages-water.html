@@ -1,13 +1,52 @@
+<script>
+    apiCtrl.request('/seuils', [], function (rawDatas) {
+        if (rawDatas.error) {
+            return false;
+        }
+
+        $('#new-water-level').val(rawDatas.seuil);
+    });
+
+    /************/
+    /** EVENTS **/
+    /************/
+
+    $('#modify-water-level').on('click', function () {
+        var seuil = $('#new-water-level').val();
+
+        $('#modify-water-level').hide();
+        $('.loading').show();
+
+        apiCtrl.request('/seuils', {
+            method: "POST",
+            data: {
+                seuil: seuil
+            }
+        }, function (rawDatas) {
+            if (rawDatas.error) {
+                $('.loading').hide();
+                $('#modify-water-level').show();
+                
+                return false;
+            }
+
+            $('.loading').hide();
+            $('#modify-water-level').show();
+        });
+    });
+
+</script>
 <div class="list">
     <h3 class="settings-title">Niveau d'eau</h3>
 
     <div class="item item-settings no-border">
-        <input type="text" value="" class="width">
+        <input type="phone" id="new-water-level" value=""> cm
     </div>
 
     <div class="item item-settings no-border">
         <center>
-            <button class="btn green">Enregistrer les modifications</button>
+            <button class="btn green" id="modify-water-level">Enregistrer les modifications</button>
+            <span class="ion-loading-c loading" style="font-size: 20px; display:none"></span>
         </center>
     </div>
 </div>
