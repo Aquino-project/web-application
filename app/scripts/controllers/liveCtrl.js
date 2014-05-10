@@ -7,12 +7,18 @@
  * 6: DROITE
 */
 var opts = {
-    ip: "15221220.myvisioncam.org",
     user: "admin",
     pwd: ""
 };
 
-initCam(opts);
+apiCtrl.request('/camera/address', [], function (datas) {
+    if (datas.error) {
+        return false;
+    }
+    
+    opts['ip'] = datas.ip;
+    initCam(opts);
+});
 
 function writeCommand(type, opts)
 {
@@ -42,5 +48,5 @@ function initCam(opts)
 {
     $.ajax({
         url: 'http://'+ opts['ip'] +'/set_misc.cgi?led_mode=2&ptz_patrol_rate=10&ptz_auto_patrol_interval=0&Ptz_patrol_v_round=0&Ptz_patrol_h_round=0&user='+ opts['user'] +'&pwd='+ opts['pwd']
-        });
+    });
 }
