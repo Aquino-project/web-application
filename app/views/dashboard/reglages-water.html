@@ -24,12 +24,14 @@
             }
         }, function (rawDatas) {
             if (rawDatas.error) {
+                notificationCtrl.add('water-no', 'Opération échouée', rawDatas.message);
                 $('.loading').hide();
                 $('#modify-water-level').show();
                 
                 return false;
             }
 
+            notificationCtrl.add('water-ok', 'Opération réussie', rawDatas.message);
             $('.loading').hide();
             $('#modify-water-level').show();
         });
