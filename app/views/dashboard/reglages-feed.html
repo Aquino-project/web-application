@@ -22,7 +22,7 @@
         $('.loading').show();
 
         apiCtrl.request('/feed', {
-            method: 'POST',
+            method: 'PUT',
             data: {
                 hour: hour
             }
@@ -63,11 +63,8 @@
         $(current).hide();
         $parent.children('.item-loading').show();
 
-        apiCtrl.request('/feed/delete', {
-            method: 'POST',
-            data: {
-                hour: hour
-            }
+        apiCtrl.request('/feed/'+ hour, {
+            method: 'DELETE'
         }, function (result) {
                 if (result.error == true) {
                     notificationCtrl.add('feed-no', 'Opération échouée', result.message);
