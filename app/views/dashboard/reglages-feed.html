@@ -22,7 +22,7 @@
         $('.loading').show();
 
         apiCtrl.request('/feed', {
-            method: 'PUT',
+            method: 'POST',
             data: {
                 hour: hour
             }
@@ -110,7 +110,6 @@
             <option value="21">21</option>
             <option value="22">22</option>
             <option value="23">23</option>
-            <option value="24">24</option>
         </select>h00
         &nbsp;&nbsp;
         <button class="btn" id="modify-feed-hour">Ajouter l'heure</button>
