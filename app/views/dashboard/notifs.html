@@ -8,7 +8,28 @@
             var template = Mustache.render(result, datas);
             $('#notifications .list').html(template);
         });
-    });  
+    });
+
+    /************/
+    /** EVENTS **/
+    /************/
+
+    $('#notifications').on('click', '.delete', function() {
+        var id = $(this).parent().attr('data-id');
+
+        apiCtrl.request('/alerts/'+ id, {
+            method: 'DELETE'
+        }, function () {
+            var count = parseInt($('#alerts-count').html());
+            var newCount = count - 1;
+
+            if (newCount > 0) {
+                $('#alerts-count').html(newCount);
+            } else {
+                $('#alerts-count').html('');
+            }
+        });
+    });
 </script>
 
 <!-- Notifications -->
