@@ -1,31 +1,20 @@
+<script type="text/javascript">
+    apiCtrl.request('/alerts', [], function (datas) {
+        if (datas.error) {
+            return false;
+        }
+
+        var template = $.get('views/dashboard/lists/alerts.html', function (result) {
+            var template = Mustache.render(result, datas);
+            $('#notifications .list').html(template);
+        });
+    });  
+</script>
+
 <!-- Notifications -->
 <section id="notifications">
     <div class="list">
-        <div class="item">
-            <button class="delete delete-item">
-                <span class="ion-close"></span>
-            </button>
-            
-            <h3 class="notif">Erreur !</h3>
-            Impossible d'accéder à Internet !
-        </div>
-
-        <div class="item">
-            <button class="delete delete-item">
-                <span class="ion-close"></span>
-            </button>
-            
-            <h3 class="notif">Erreur !</h3>
-            Impossible d'accéder à Internet !
-        </div>
-
-        <div class="item">
-            <button class="delete delete-item">
-                <span class="ion-close"></span>
-            </button>
-            
-            <h3 class="notif">Erreur !</h3>
-            Impossible d'accéder à Internet !
-        </div>
+        <br>
+        <center>Aucune notification</center>
     </div>
 </section>
