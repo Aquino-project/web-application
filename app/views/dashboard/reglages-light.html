@@ -47,12 +47,14 @@
             }
         }, function (rawDatas) {
             if (rawDatas.error) {
+                notificationCtrl.add('light-no', 'Opération échouée', rawDatas.message);
                 $('.loading').hide();
                 $('#modify-hours').show();
                 
                 return false;
             }
 
+            notificationCtrl.add('light-no', 'Opération réussie', rawDatas.message);
             $('.loading').hide();
             $('#modify-hours').show();
         });
