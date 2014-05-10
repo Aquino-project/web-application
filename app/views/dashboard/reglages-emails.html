@@ -24,14 +24,14 @@
             }
         }, function (rawDatas) {
             if (rawDatas.error) {
-                notificationCtrl.add('feed-no', 'Opération échouée', rawDatas.message);
+                notificationCtrl.add('email-no', 'Opération échouée', rawDatas.message);
                 $('.loading').hide();
                 $('#modify-email').show();
                 
                 return false;
             }
 
-            notificationCtrl.add('feed-no', 'Opération réussie', rawDatas.message);
+            notificationCtrl.add('email-no', 'Opération réussie', rawDatas.message);
             $('.loading').hide();
             $('#modify-email').show();
         });
