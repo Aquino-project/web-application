@@ -1,6 +1,6 @@
 var apiCtrl = {
 
-    url: "http://192.168.0.15",
+    url: "http://localhost",
     port: 1337,
 
     request: function (uri, params, success, error)

@@ -1,10 +1,71 @@
+<script>
+    apiCtrl.request('/light', [], function (datas) {
+        if (datas.error) {
+            return false;
+        }
+
+        var hour_start = parseInt(datas.hours.hour_on);
+        var hour_end = parseInt(datas.hours.hour_off);
+
+        // Selection de l'heure de depart
+        $('#light-hour-start option').each(function () {
+            var hour = $(this).val();
+            hour = parseInt(hour);
+
+            if (hour == hour_start) {
+                $(this).attr('selected', true);
+            }
+        });
+
+        // Selection de l'heure de fin
+        $('#light-hour-end option').each(function () {
+            var hour = $(this).val();
+            hour = parseInt(hour);
+
+            if (hour == hour_end) {
+                $(this).attr('selected', true);
+            }
+        });
+    });
+
+    /************/
+    /** EVENTS **/
+    /************/
+
+    $('#modify-hours').on('click', function () {
+        var hour_start = $('#light-hour-start').val();
+        var hour_end = $('#light-hour-end').val();
+
+        $('#modify-hours').hide();
+        $('.loading').show();
+
+        apiCtrl.request('/light', {
+            method: "PUT",
+            data: {
+                hour_start: hour_start,
+                hour_end: hour_end
+            }
+        }, function (rawDatas) {
+            if (rawDatas.error) {
+                $('.loading').hide();
+                $('#modify-hours').show();
+                
+                return false;
+            }
+
+            $('.loading').hide();
+            $('#modify-hours').show();
+        });
+    });
+
+</script>
 <div class="list">
     <h3 class="settings-title">Eclairage</h3>
 
     <div class="item item-settings">
         Allumer à 
         &nbsp;&nbsp;
-        <select >
+        <select id="light-hour-start">
             <option value="6">06h</option>
             <option value="7">07h</option>
             <option value="8">08h</option>
@@ -17,7 +78,7 @@
     <div class="item item-settings no-border">
         Eteindre à 
         &nbsp;
-        <select >
+        <select id="light-hour-end">
             <option value="15">15h</option>
             <option value="16">16h</option>
             <option value="17">17h</option>
@@ -30,7 +91,8 @@
 
     <div class="item item-settings no-border">
         <center>
-            <button class="btn green">Enregistrer les modifications</button>
+            <button class="btn green" id="modify-hours">Enregistrer les modifications</button>
+            <span class="ion-loading-c loading" style="font-size: 20px; display:none"></span>
         </center>
     </div>
 </div>
