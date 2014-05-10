@@ -1,13 +1,36 @@
+<script type="text/javascript">
+    apiCtrl.request('/feed/hour/next', [], function (datas) {
+        if (datas.error) {
+            return false;
+        }
+
+        $('#next-hour').html(datas.heure);
+    });
+
+    apiCtrl.request('/light', [], function (datas) {
+        if (datas.error) {
+            return false;
+        }
+
+        $('#light-on-hour').html(datas.hours.hour_on);
+        $('#light-off-hour').html(datas.hours.hour_off);
+    });
+</script>
+
 <!-- Liste des constantes -->
 <div class="dashboard-list">
     <div class="item">
         <h2>Heure d'éclairage</h2>
         <span class="icon ion-ios7-lightbulb-outline yellow"></span>
-        <h3><center>06h - 17h</center></h3>
+        <h3>
+            <center>
+                <span id="light-on-hour">12</span>h - <span class="light-off-hour">21</span>h
+            </center>
+        </h3>
     </div>
     <div class="item">
         <h2>Prochain nourrissage</h2>
         <span class="icon ion-fork blue"></span>
-        <h3>18</h3> h
+        <h3 id="next-hour">00</h3> h
     </div>
 </div>
