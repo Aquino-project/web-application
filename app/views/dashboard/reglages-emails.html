@@ -1,15 +1,54 @@
+<script>
+    apiCtrl.request('/email', [], function (rawDatas) {
+        if (rawDatas.error) {
+            return false;
+        }
+
+        $('#new-email').val(rawDatas.email);
+    });
+
+    /************/
+    /** EVENTS **/
+    /************/
+
+    $('#modify-email').on('click', function () {
+        var email = $('#new-email').val();
+
+        $('#modify-email').hide();
+        $('.loading').show();
+
+        apiCtrl.request('/email', {
+            method: "PUT",
+            data: {
+                email: email
+            }
+        }, function (rawDatas) {
+            if (rawDatas.error) {
+                $('.loading').hide();
+                $('#modify-email').show();
+                
+                return false;
+            }
+
+            $('.loading').hide();
+            $('#modify-email').show();
+        });
+    });
+
+</script>
 <div class="list">
     <h3 class="settings-title">
         Adresse email
     </h3>
 
     <div class="item item-settings">
-        <input type="email" class="mdp width" value="">
+        <input type="email" id="new-email" class="mdp width" value="">
     </div>
 
     <div class="item item-settings no-border">
         <center>
-            <button class="btn green">Enregistrer les modifications</button>
+            <button id="modify-email" class="btn green">Enregistrer les modifications</button>
+            <span class="ion-loading-c loading" style="font-size: 20px; display:none"></span>
         </center>
     </div>
 </div>
