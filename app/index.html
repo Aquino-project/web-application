@@ -21,21 +21,15 @@
                 <form method="post" id="login">
                     <input type="password" placeholder="Mot de passe">
                 </form>
-                <div class="hr">
-                    <hr>OU<hr>
-                </div>
-                <center>
-                    <a class="btn" href="forgot.html">Récupération mot de passe</a>
-                </center>
             </div>
         </section>
 
         <script type="text/javascript" src="scripts/lib/jquery.js"></script>
         <script>
-        $('#login').on('submit', function (event) {
-            event.preventDefault();
-            window.location.href = 'dashboard.html';
-        });
+            $('#login').on('submit', function (event) {
+                event.preventDefault();
+                window.location.href = 'dashboard.html';
+            });
         </script>
 
     </body>
