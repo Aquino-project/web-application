@@ -36,7 +36,7 @@
             <button id="display-nav" class="btn icon nav left"><span class="ion-navicon"></span></button>
             <button id="back" class="btn icon nav left"><span class="ion-ios7-arrow-left"></span></button>
             <button id="display-notif" class="btn icon notif right got-badge change-page" data-page="dashboard/notifs">
-                <span class="badge">3</span>
+                <span class="badge" id="alerts-count">0</span>
                 <span class="ion-ios7-bell-outline"></span>
             </button>
             <button id="hide-notif" class="btn icon notif right">
@@ -59,6 +59,21 @@
         <script type="text/javascript" src="scripts/controllers/apiCtrl.js"></script>
         <script type="text/javascript" src="scripts/controllers/notificationCtrl.js"></script>
 
+        <script>
+            checkNotifs();
+            setInterval(checkNotifs, 60000);
+
+            function checkNotifs ()
+            {
+                apiCtrl.request('/alerts/count', [], function (datas) {
+                    if (datas.error) {
+                        return false;
+                    }
+
+                    $('#alerts-count').html(datas.count);
+                });
+            }
+        </script>
 
         <!-- TEMPLATES -->
         <script type="text/template" id="template-error">
