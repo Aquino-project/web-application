@@ -13,6 +13,8 @@ $(document).ready(function () {
         event.preventDefault();
         var password = $('#password').val();
 
+        $('#password').blur();
+
         loginCtrl.isAutorized(password,
             // En cas de succes
             function () {
