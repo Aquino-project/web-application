@@ -23,6 +23,10 @@ var apiCtrl = {
 
         var apiContactUrl = this.url +":"+ this.port + uri;
 
+        if (localStorage.token && localStorage.token != null) {
+            apiContactUrl += "?token="+ localStorage.token;
+        }
+
         $.ajax({
             url: apiContactUrl,
             data: params.data,
