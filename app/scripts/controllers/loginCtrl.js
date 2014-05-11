@@ -52,6 +52,11 @@ var loginCtrl = {
             localStorage.token = result.token;
             success();
         });
+    },
+
+    destroyToken: function ()
+    {
+        localStorage.token = '';
     }
 
 };
