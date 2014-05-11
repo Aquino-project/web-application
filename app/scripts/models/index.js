@@ -14,6 +14,7 @@ $(document).ready(function () {
         var password = $('#password').val();
 
         $('#password').blur();
+        $('#password').val('');
 
         loginCtrl.isAutorized(password,
             // En cas de succes
