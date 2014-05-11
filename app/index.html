@@ -19,18 +19,15 @@
             <div class="content">
                 <h1 class="animated bounceIn"><img src="static/images/logo.png" width="200"></h1>
                 <form method="post" id="login">
-                    <input type="password" placeholder="Mot de passe">
+                    <input type="password" id="password" placeholder="Mot de passe">
                 </form>
             </div>
         </section>
 
         <script type="text/javascript" src="scripts/lib/jquery.js"></script>
-        <script>
-            $('#login').on('submit', function (event) {
-                event.preventDefault();
-                window.location.href = 'dashboard.html';
-            });
-        </script>
+        <script type="text/javascript" src="scripts/controllers/apiCtrl.js"></script>
+        <script type="text/javascript" src="scripts/controllers/loginCtrl.js"></script>
+        <script type="text/javascript" src="scripts/models/index.js"></script>
 
     </body>
 </html>
