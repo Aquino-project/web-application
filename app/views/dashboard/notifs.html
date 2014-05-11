@@ -6,7 +6,11 @@
 
         var template = $.get('views/dashboard/lists/alerts.html', function (result) {
             var template = Mustache.render(result, datas);
-            $('#notifications .list').html(template);
+            var count = datas.alerts.length;
+
+            if (count > 0) {
+                $('#notifications .list').html(template);
+            }
         });
     });
 
