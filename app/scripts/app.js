@@ -129,4 +129,10 @@ $(document).ready(function() {
         });
     });
 
+    // Deconnecte l'utilisateur
+    $('#logout').on('click', function () {
+        loginCtrl.destroyToken();
+        window.location.href = 'index.html';
+    });
+
 });
